@@ -7,6 +7,7 @@
 <title>书城首页</title>
 
 	<%-- 静态包含 base标签、css样式、jQuery文件 --%>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 	<%@ include file="/pages/common/head.jsp"%>
 	<Script type="text/javascript">
 		$(function () {
@@ -31,14 +32,18 @@
 </head>
 <body>
 	
-	<div id="header">
-			<img class="logo_img" alt="" src="static/img/logo.gif" >
-			<span class="wel_word">网上书城</span>
-			<div>
+	<div id="header" style="height: auto">
+		<!-- Image and text -->
+		<nav class="navbar navbar-light bg-light">
+			<a class="navbar-brand" href="#">
+				<img src="static/img/logo1.png" width="100" height="100" class="d-inline-block align-top" style="float: left" alt="" loading="lazy">
+				<span class="wel_word" style="display: block;margin: 10px">网上书城</span>
+			</a>
+			<div class="navbar-brand">
 				<%--如果用户还没有登录，显示     【登录 和注册的菜单】 --%>
 				<c:if test="${empty sessionScope.user}">
-					<a href="pages/user/login.jsp">登录</a> |
-					<a href="pages/user/regist.jsp">注册</a> &nbsp;&nbsp;
+					<a href="pages/user/login.jsp" style="color: #666666">登录</a> |
+					<a href="pages/user/regist.jsp" style="color: #666666">注册</a> &nbsp;&nbsp;
 				</c:if>
 				<%--如果已经登录，则显示 登录 成功之后的用户信息。--%>
 				<c:if test="${not empty sessionScope.user}">
@@ -47,9 +52,11 @@
 					<a href="userServlet?action=logout">注销</a>&nbsp;&nbsp;&nbsp;
 				</c:if>
 
-				<a href="pages/cart/cart.jsp">购物车</a>
-				<a href="pages/manager/manager.jsp">后台管理</a>
+				<a href="pages/cart/cart.jsp" style="color: #666666">购物车</a>
+				<a href="pages/manager/manager.jsp" style="color: #666666">后台管理</a>
 			</div>
+		</nav>
+
 	</div>
 
 	<div id="main">
@@ -125,5 +132,8 @@
 	<%--静态包含页脚内容--%>
 	<%@include file="/pages/common/footer.jsp"%>
 
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 </body>
 </html>
